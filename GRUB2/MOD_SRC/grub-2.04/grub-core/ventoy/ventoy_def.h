@@ -1041,7 +1041,7 @@ int ventoy_unregister_all_cmd(void);
 int ventoy_chain_file_size(const char *path);
 int ventoy_chain_file_read(const char *path, int offset, int len, void *buf);
 
-#define VTOY_CMD_CHECK(a) if (false) ventoy_syscall0(exit)
+#define VTOY_CMD_CHECK(a) if (0) ventoy_syscall0(exit)
 
 #define vtoy_theme_random_boot_second  0
 #define vtoy_theme_random_boot_day     1
