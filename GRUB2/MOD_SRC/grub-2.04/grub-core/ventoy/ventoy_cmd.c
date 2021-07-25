@@ -4026,6 +4026,7 @@ int ventoy_load_part_table(const char *diskname)
     }
 
     disk = grub_disk_open(diskname);
+    int root_position = disk->partition;
     if (!disk)
     {
         debug("Failed to open disk %s\n", diskname);
@@ -4038,7 +4039,7 @@ int ventoy_load_part_table(const char *diskname)
     grub_disk_close(disk);
 
 
-    g_ventoy_disk_part_size[0] = ventoy_get_vtoy_partsize(disk->partition);
+    g_ventoy_disk_part_size[0] = ventoy_get_vtoy_partsize(root_position);
     g_ventoy_disk_part_size[1] = g_ventoy_disk_part_size[0];
 
     return 0;
