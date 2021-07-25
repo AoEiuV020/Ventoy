@@ -4037,19 +4037,6 @@ int ventoy_load_part_table(const char *diskname)
     grub_disk_read(disk, 0, 0, sizeof(ventoy_gpt_info), g_ventoy_part_info);
     grub_disk_close(disk);
 
-    grub_snprintf(name, sizeof(name), "%s,1", diskname);
-    dev = grub_device_open(name);
-    if (dev)
-    {
-        /* Check for official Ventoy device */
-        ret = ventoy_check_official_device(dev);
-        grub_device_close(dev);
-
-        if (ret)
-        {
-            return 1;
-        }
-    }
 
     g_ventoy_disk_part_size[0] = ventoy_get_vtoy_partsize(disk->partition);
     g_ventoy_disk_part_size[1] = g_ventoy_disk_part_size[0];
